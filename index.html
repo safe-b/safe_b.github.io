@@ -350,6 +350,10 @@
     </head>
 
     <body>
+	<audio id="myMusic" loop>
+        <source src="https://safe-b.github.io/1.aac" type="audio/aac">
+        您的浏览器不支持 audio 元素。
+    </audio>
         <div class="card">
             <div class="card-page cart-page-front">
                 <div class="card-page cart-page-outside"></div>
@@ -543,13 +547,18 @@
         $(document).ready(function () {
 
             var $clickMe = $('.click-icon'),
-                $card = $('.card');
+                $card = $('.card'),
+	audio = $('#myMusic')[0];
 
             $card.on('click', function () {
 
                 $(this).toggleClass('is-opened');
                 $clickMe.toggleClass('is-hidden');
-
+	if ($(this).hasClass('is-opened')) {
+            audio.play();
+        } else {
+            audio.pause();
+        }
             });
 
         });
