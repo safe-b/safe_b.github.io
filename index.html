@@ -344,14 +344,77 @@
                 font-size: 20px;
             }
         }
+      .audio-selector {
+            display: none; /* 初始时隐藏 */
+            position: fixed; /* 固定位置 */
+            top: 50%; /* 居中显示 */
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background-color: rgba(22, 22, 22, 0); /* 半透明背景 */
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+            z-index: 1000; /* 确保在最前面 */
+        }
+
+        .audio-selector button {
+            display: block;
+            margin-bottom: 10px;
+            width: 100%;
+        }
+.btn {
+    background-color: rgba(22, 22, 22, 0.5); /* 半透明背景 */
+        border-radius: 10px;
+        color: #c5a880;
+        border: 1px solid #c5a880;
+        padding: 16px;
+        width: 300px;
+        margin-bottom: 16px;
+        line-height: 1.5;
+        cursor: pointer;
+}
+ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+.title {
+    color: #a07676;
+    font-weight: bold;
+    font-size: 1.25rem;
+    margin-bottom: 16px;
+}
     </style>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
     </head>
 
     <body>
-	<audio id="myMusic" loop>
-        <source src="https://cdn.jsdelivr.net/gh/safe-b/safe_b.github.io/1.aac" type="audio/aac">
+    <div class="audio-selector" id="audioSelector">
+	<ul>	
+<li class="title">请宝宝选择想听滴音乐</li>
+        <li>
+	<button class="btn" onclick="selectAudio('audio1')">Last Christmas</button>
+        </li>
+        <li>
+            <button class="btn" onclick="selectAudio('audio2')">G . O . A . T</button>
+        </li>
+        <li>
+            <button class="btn" onclick="selectAudio('audio3')">Hello</button>
+        </li>
+        <li>
+            <button class="btn" onclick="selectAudio('audio4')">RUN</button>
+        </li>
+</ul>
+    </div>
+</div>
+
+	
+    <audio id="audio1" src="https://cdn.jsdelivr.net/gh/safe-b/mp3/2.aac" type="audio/aac"></audio>
+    <audio id="audio2" src="https://cdn.jsdelivr.net/gh/safe-b/mp3/G.O.A.T(TREASURE).mp3"></audio>
+    <audio id="audio3" src="https://cdn.jsdelivr.net/gh/safe-b/mp3/Hello(TREASURE).mp3"></audio>
+    <audio id="audio4" loop>
+        <source src="https://cdn.jsdelivr.net/gh/safe-b/mp3/RUN(TREASURE).mp3" >
         您的浏览器不支持 audio 元素。
     </audio>
         <div class="card">
@@ -528,9 +591,9 @@
                 </div>
             </div>
             <div class="card-page cart-page-bottom">
-                <p>赵露宝宝圣诞快乐！平平安安<br><br>
+                <p>祝赵露宝宝平安夜快乐！平平安安！圣诞happy！！！<br><br>
 	<br><br>
-                    <i>想咬你的波波</i>
+                    <i>咬你</i>
                 </p>
             </div>
         </div>
@@ -545,23 +608,36 @@
     </body>
     <script>
         $(document).ready(function () {
+        var $clickMe = $('.click-icon'),
+            $card = $('.card'),
+            cardOpened = false; // 标志变量，用于跟踪卡片状态
 
-            var $clickMe = $('.click-icon'),
-                $card = $('.card'),
-	audio = $('#myMusic')[0];
-
-            $card.on('click', function () {
-
-                $(this).toggleClass('is-opened');
-                $clickMe.toggleClass('is-hidden');
-	if ($(this).hasClass('is-opened')) {
-            audio.play();
-        } else {
-            audio.pause();
-        }
-            });
-
+        $card.on('click', function () {
+            if (!cardOpened) {
+                $('#audioSelector').show(); // 显示音频选择框
+            } else {
+                pauseAllAudios(); // 暂停所有音频
+                $(this).removeClass('is-opened'); // 关闭卡片
+                $clickMe.removeClass('is-hidden'); // 显示点击提示
+            }
+            cardOpened = !cardOpened; // 切换卡片状态
         });
+    });
+
+    function selectAudio(audioId) {
+        $('#audioSelector').hide(); // 隐藏音频选择框
+        pauseAllAudios(); // 暂停所有音频
+        var selectedAudio = $('#' + audioId)[0];
+        selectedAudio.play(); // 播放选中的音频
+        $('.card').addClass('is-opened'); // 打开卡片
+        $('.click-icon').addClass('is-hidden'); // 隐藏点击提示
+    }
+
+    function pauseAllAudios() {
+        $('audio').each(function() {
+            this.pause(); // 暂停音频
+        });
+    }
     </script>
 
 </html>
