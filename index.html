@@ -5,12 +5,16 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>圣诞贺卡</title>
+    <title>给赵露的圣诞贺卡</title>
+    <link href="https://fonts.googleapis.com/css?family=Mountains+of+Christmas&display=swap" rel="stylesheet">
 </head>
 
 <body>
     <style>
         @import url("https://fonts.googleapis.com/css?family=Mirza&subset=latin-ext");
+         @import url("https://fonts.googleapis.com/css?family=Mountains+of+Christmas&display=swap");
+
+
 
         * {
             box-sizing: border-box;
@@ -322,15 +326,18 @@
         }
 
         p {
-            font-family: "Mirza", Verdana, Arial, serif;
-            font-size: 36px;
-            line-height: 1.2em;
+            
+            font-size: 46px;
+            line-height: 0.2em;
             padding-left: 10px;
             color:#317143;
             font-weight:bold;
+display: block; /* 确保每个 <p> 标签都是块级元素 */
+        margin-bottom: 1em; /* 在每个段落下方添加一些空间 */
            &a{
 	color:black;
          }
+	
         }
 
         @media (max-width: 767px) {
@@ -362,6 +369,9 @@
             margin-bottom: 10px;
             width: 100%;
         }
+.h1{
+	font-family: 'Mountains of Christmas';
+	}
 .btn {
     background-color: rgba(22, 22, 22, 0.5); /* 半透明背景 */
         border-radius: 10px;
@@ -379,10 +389,11 @@ ul {
     margin: 0;
 }
 .title {
-    color: #a07676;
+    color: #317143;
     font-weight: bold;
     font-size: 1.25rem;
     margin-bottom: 16px;
+    font-family: 'Mountains of Christmas',cursive;
 }
     </style>
 
@@ -392,7 +403,7 @@ ul {
     <body>
     <div class="audio-selector" id="audioSelector">
 	<ul>	
-<li class="title">请宝宝选择想听滴音乐</li>
+<li class="title">🎄Merry Christmas!🎄</li>
         <li>
 	<button class="btn" onclick="selectAudio('audio1')">Last Christmas</button>
         </li>
@@ -426,7 +437,7 @@ ul {
                             xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="540.054px"
                             height="551.88px" viewBox="0 0 540.054 551.88" enable-background="new 0 0 540.054 551.88"
                             xml:space="preserve">
-                            <path fill="#0A0A0A"
+                            <path fill="#317143"
                                 d="M408.424,259.126c-6.145,0.44-11.873,2.104-17.349,4.458c1.873-7.48,7.205-30.873-6.877-29.254
         c-1.13,0.129-1.724,0.823-1.892,1.648c-0.16,0.177-0.31,0.373-0.429,0.615c-3.015,6.094-5.718,14.199-9.76,19.695
         c-1.472,2-2.722,4.848-5.667,6c-7.667,3-1-20.667,0.403-26.008c1.336-5.086-5.09-5.446-9.21-5.564
@@ -591,9 +602,7 @@ ul {
                 </div>
             </div>
             <div class="card-page cart-page-bottom">
-                <p>祝赵露宝宝平安夜快乐！平平安安！圣诞happy！！！<br><br>
-	<br><br>
-                    <i>咬你</i>
+                <p>🎄圣诞快乐!🎄<br><br>
                 </p>
             </div>
         </div>
